@@ -4,8 +4,10 @@ import path from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  root: path.resolve(process.cwd(), 'pages-src'),
   base: './',
   plugins: [react()],
+  publicDir: path.resolve(process.cwd(), 'public'),
   css: { postcss: { plugins: [tailwindcss()] } },
   resolve: {
     alias: {
@@ -13,7 +15,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'pages-dist',
+    outDir: path.resolve(process.cwd(), 'pages-dist'),
     emptyOutDir: true,
   },
 });
